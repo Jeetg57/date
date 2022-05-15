@@ -29,7 +29,6 @@ export default function OnboardingForm() {
   } = useForm();
 
   async function onSubmit(values: any) {
-    console.log(values);
     let res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/onboarding/`, {
       method: "POST",
       body: JSON.stringify(values, null, 1),
@@ -71,7 +70,6 @@ export default function OnboardingForm() {
     //   });
     //   console.log(e.toString());
     // });
-    console.log(res);
     if (res) {
       if (res.error) {
         toast({
@@ -152,7 +150,9 @@ export default function OnboardingForm() {
               </HStack>
 
               <FormControl isInvalid={errors.initiatedName}>
-                <FormLabel htmlFor="initiatedName">Initiated name</FormLabel>
+                <FormLabel htmlFor="initiatedName">
+                  Initiated name (optional)
+                </FormLabel>
                 <Input
                   id="initiatedName"
                   placeholder="Initiated Name"
